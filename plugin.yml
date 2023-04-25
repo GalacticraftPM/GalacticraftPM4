@@ -1,0 +1,5 @@
+name: GalacticraftPM4
+version: 0.0.1-predev
+author: Tijmen aka DemonicDev
+api: [4.0.0]
+main: GalacticraftPM\DemonicDev\Main
