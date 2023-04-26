@@ -7,8 +7,12 @@ So yeah This is GalacticraftPM4
 pls have patience because this is the first test version of the plugin ^^
 there are many bug fixes to do, and i only wrote until now the basics of the MoonGenerator (i inspired me from Multiworlds code)
 Important ToDos:
-- Add Overworld Ores [ ]
+- Rewrite MotionCalculator for simulating Gravity [ ]
 - Rewrite OverWorldGenerator [ ]
+- Add Custom Blocks
+  - Moon Ores [ ]
+  - Moon Blocks [ ]
+  - Overworld Ores [ ]
 - Rewrite MoonGenerator [ ]
 - Add Custom Items [ ]
 - Add Custom Entities [ ]
