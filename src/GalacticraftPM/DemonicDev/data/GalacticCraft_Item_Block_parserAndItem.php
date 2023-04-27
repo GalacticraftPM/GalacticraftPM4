@@ -12,9 +12,9 @@ class GalacticCraft_Item_Block_parserAndItem extends GalacticraftBlockAndItemLis
 {
     public function Block_to_Item($BlockId){
         if(is_int($BlockId)) {
-            $GC_Block = $this->Block_to_ItemCalc($BlockId);
+            $GC_Block = $this->Block_to_ItemTranslator($BlockId);
         }elseif($BlockId instanceof Block){
-            $GC_Block = $this->Block_to_ItemCalc($BlockId->getId());
+            $GC_Block = $this->Block_to_ItemTranslator($BlockId->getId());
         }
         else{
             throw new \RuntimeException("[var BlockId] has to be type Int or Pocketmine\block\Block (or CustomiesBlockFactory::getInstance()->get('customies:example_block')");
@@ -24,7 +24,23 @@ class GalacticCraft_Item_Block_parserAndItem extends GalacticraftBlockAndItemLis
     public function Block_to_ItemId($BlockId){
         return $this->Block_to_Item($BlockId)->getId();
     }
-    public function Block_to_ItemCalc($BlockId){
+    public function Item_to_Block($ItemId){
+        if(is_int($ItemId)) {
+            $GC_Item = $this->Item_to_BlockTranslator($ItemId);
+        }elseif($ItemId instanceof Item){
+            $GC_Item  = $this->Item_to_BlockTranslator($ItemId->getId());
+        }
+        else{
+            throw new \RuntimeException("[var ItemId] has to be type Int or Pocketmine\item\Item (or CustomiesItemFactory::getInstance()->get('customies:example_block')");
+        }
+        return  $GC_Item;
+    }
+    public function Item_to_BlockId($ItemId){
+        return $this->Item_to_Block($ItemId)->getId();
+    }
+
+    /** TranslatorList */
+    public function Block_to_ItemTranslator($BlockId){
         switch($BlockId){
             default:
                 return null;
@@ -35,22 +51,7 @@ class GalacticCraft_Item_Block_parserAndItem extends GalacticraftBlockAndItemLis
             #     return CustomiesItemFactory::getInstance()->get("customies:moon_rock")->getId();
         }
     }
-
-    public function Item_to_Block($ItemId){
-        if(is_int($ItemId)) {
-            $GC_Item = $this->Item_to_BlockCalc($ItemId);
-        }elseif($ItemId instanceof Item){
-            $GC_Item  = $this->Item_to_BlockCalc($ItemId->getId());
-        }
-        else{
-            throw new \RuntimeException("[var ItemId] has to be type Int or Pocketmine\item\Item (or CustomiesItemFactory::getInstance()->get('customies:example_block')");
-        }
-        return  $GC_Item;
-    }
-    public function Item_to_BlockId($ItemId){
-        return $this->Item_to_Block($ItemId)->getId();
-    }
-    public function Item_to_BlockCalc($ItemId){
+    public function Item_to_BlockTranslator($ItemId){
         switch($ItemId){
             default:
                 return null;

@@ -21,10 +21,19 @@ class GameHandler extends GCIBp
 
     public function BreakCalculator($event){
         $name = $event->getBlock()->getName();
-        $id = $event->getBlock()->getId();
+        $blockId = $event->getBlock()->getId();
         $Fullid = $event->getBlock()->getFullId();
+        if($this->isGalacticraftBlockId($blockId) == true and $event->getPlayer()->isSurvival()){
+            $GC_item = $this->Block_to_Item($blockId);
+            $drops = [$GC_item];
+            $event->setDrops($drops);
+            #$event->cancel()   ;
+            #$player->getInventory()->addItem($GC_item);
+        }
 
-        $event->getPlayer()->sendMessage("$name, $id, $Fullid");
+
+
+        $event->getPlayer()->sendMessage("$name, $blockId, $Fullid");
 
         switch($name){
             case"moon_dirt":
@@ -43,13 +52,7 @@ class GameHandler extends GCIBp
 
             break;
             case 1:
-                //place click
-              #  switch($event->getItem()->getId()){
-               #     case CustomiesItemFactory::getInstance()->get("customies:moon_dirt")->getId():
-                #        $New_Block = CustomiesBlockFactory::getInstance()->get("customies:moon_dirt");
-                 #       $this->GalacticBlockPlacer($event, $New_Block);
-                  #  break;
-
+                /** Function for Block Place */
                 if($this->isGalacticraftItemBlockId($event->getItem()->getId())){
                     $New_Block = $this->Item_to_Block($event->getItem()->getId());
                     $this->GalacticBlockPlacer($event, $New_Block);
@@ -61,7 +64,6 @@ class GameHandler extends GCIBp
     }
     public function Middle_click_handler($event)
     {
-
         $blockId = $event->getBlock()->getId();
         $player = $event->getPlayer();
         if($this->isGalacticraftBlockId($blockId) == true){
