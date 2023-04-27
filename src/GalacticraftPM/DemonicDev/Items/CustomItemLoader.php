@@ -11,6 +11,6 @@ class CustomItemLoader
 
     public function LoadAllGalacticItems(){
         CustomiesItemFactory::getInstance()->registerItem(moon_dirt::class, "customies:moon_dirt", "Moon Dirt");
-        CustomiesItemFactory::getInstance()->registerItem(moon_rock::class, "customies:moon_rock", "Moon Rock");
+        #CustomiesItemFactory::getInstance()->registerItem(moon_rock::class, "customies:moon_rock", "Moon Rock");
     }
 }

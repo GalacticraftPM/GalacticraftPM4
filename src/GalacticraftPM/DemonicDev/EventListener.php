@@ -14,6 +14,7 @@ use pocketmine\color\Color;
 use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\event\block\BlockPlaceEvent;
 use pocketmine\event\player\PlayerInteractEvent;
+use pocketmine\event\player\PlayerBlockPickEvent;
 class EventListener implements Listener
 {
     public function onJoin(PlayerJoinEvent $event){
@@ -90,6 +91,9 @@ class EventListener implements Listener
     public function onPlace(BlockPlaceEvent $event)
     {
         #Main::getInstance()->RunCommandIntoGameHandler($event);
+    }
+    public function onMiddleClick(PlayerBlockPickEvent $event){
+        GameHandler::getInstance()->Middle_click_handler($event);
     }
     public function onInteract(PlayerInteractEvent $event){
         GameHandler::getInstance()->interact_handler($event);
