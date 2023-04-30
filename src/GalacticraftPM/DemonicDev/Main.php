@@ -5,6 +5,7 @@ namespace GalacticraftPM\DemonicDev;
 
 
 use GalacticraftPM\DemonicDev\tasks\UpdateTask;
+use GalacticraftPM\DemonicDev\World\Generators\Overworld\OverworldGen;
 use pocketmine\plugin\PluginBase;
 use pocketmine\world\generator\GeneratorManager;
 
@@ -39,7 +40,10 @@ class Main extends PluginBase
         $CBL->LoadAllGalacticBlocks();
         $CIL = new CIL();
         $CIL->LoadAllGalacticItems();
-        $generators = ["Moon" => MoonGen::class];
+        $generators = [
+            "Moon" => MoonGen::class,
+            "Overworld" => OverworldGen::class
+            ];
         foreach($generators as $name => $class) {
             GeneratorManager::getInstance()->addGenerator($class, $name, fn() => null, true);
         }
@@ -83,13 +87,19 @@ class Main extends PluginBase
     }
 
     public function createPlanets(){
-            $this->getServer()->getWorldManager()->generateWorld(
-                name: "Moon_broken",
-                options: WorldCreationOptions::create()
-                    ->setSeed(mt_rand(98234, 2389423945982345))
-                    ->setGeneratorClass(MoonGen::class)
-            );
-        }
+        $this->getServer()->getWorldManager()->generateWorld(
+            name: "Moon_test",
+            options: WorldCreationOptions::create()
+                ->setSeed(mt_rand(98234, 2389423945982345))
+                ->setGeneratorClass(MoonGen::class)
+        );
+        $this->getServer()->getWorldManager()->generateWorld(
+            name: "Overworld_test",
+            options: WorldCreationOptions::create()
+                ->setSeed(mt_rand(98234, 2389423945982345))
+                ->setGeneratorClass(OverworldGen::class)
+        );
+    }
 
 
 }
