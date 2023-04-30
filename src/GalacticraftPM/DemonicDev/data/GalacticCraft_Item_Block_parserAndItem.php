@@ -50,6 +50,22 @@ class GalacticCraft_Item_Block_parserAndItem extends GalacticraftBlockAndItemLis
                 return CustomiesItemFactory::getInstance()->get("customies:moon_dirt");
             case CustomiesBlockFactory::getInstance()->get("customies:moon_rock")->getId():
                  return CustomiesItemFactory::getInstance()->get("customies:moon_rock");
+            case CustomiesBlockFactory::getInstance()->get("customies:moon_cheese_ore")->getId():
+                return CustomiesItemFactory::getInstance()->get("customies:moon_cheese_ore");
+            case CustomiesBlockFactory::getInstance()->get("customies:moon_sapphire_ore")->getId():
+                return CustomiesItemFactory::getInstance()->get("customies:moon_sapphire_ore");
+            case CustomiesBlockFactory::getInstance()->get("customies:copper_ore_moon")->getId():
+                return CustomiesItemFactory::getInstance()->get("customies:copper_ore_moon");
+            case CustomiesBlockFactory::getInstance()->get("customies:tin_ore_moon")->getId():
+                return CustomiesItemFactory::getInstance()->get("customies:tin_ore_moon");
+            case CustomiesBlockFactory::getInstance()->get("customies:tin_ore")->getId():
+                return CustomiesItemFactory::getInstance()->get("customies:tin_ore");
+            case CustomiesBlockFactory::getInstance()->get("customies:copper_ore")->getId():
+                return CustomiesItemFactory::getInstance()->get("customies:copper_ore");
+            case CustomiesBlockFactory::getInstance()->get("customies:silicon_ore")->getId():
+                return CustomiesItemFactory::getInstance()->get("customies:silicon_ore");
+            case CustomiesBlockFactory::getInstance()->get("customies:aluminium_ore")->getId():
+                return CustomiesItemFactory::getInstance()->get("customies:aluminium_ore");
         }
     }
     public function Item_to_BlockTranslator($ItemId){
@@ -62,6 +78,23 @@ class GalacticCraft_Item_Block_parserAndItem extends GalacticraftBlockAndItemLis
                 return CustomiesBlockFactory::getInstance()->get("customies:moon_dirt");
             case CustomiesItemFactory::getInstance()->get("customies:moon_rock")->getId():
                 return CustomiesBlockFactory::getInstance()->get("customies:moon_rock");
+            case CustomiesItemFactory::getInstance()->get("customies:moon_cheese_ore")->getId():
+                return CustomiesBlockFactory::getInstance()->get("customies:moon_cheese_ore");
+            case CustomiesItemFactory::getInstance()->get("customies:moon_sapphire_ore")->getId():
+                return CustomiesBlockFactory::getInstance()->get("customies:moon_sapphire_ore");
+            case CustomiesItemFactory::getInstance()->get("customies:copper_ore_moon")->getId():
+                return CustomiesBlockFactory::getInstance()->get("customies:copper_ore_moon");
+            case CustomiesItemFactory::getInstance()->get("customies:tin_ore_moon")->getId():
+                return CustomiesBlockFactory::getInstance()->get("customies:tin_ore_moon");
+            case CustomiesItemFactory::getInstance()->get("customies:tin_ore")->getId():
+                return CustomiesBlockFactory::getInstance()->get("customies:tin_ore");
+            case CustomiesItemFactory::getInstance()->get("customies:copper_ore")->getId():
+                return CustomiesBlockFactory::getInstance()->get("customies:copper_ore");
+            case CustomiesItemFactory::getInstance()->get("customies:silicon_ore")->getId():
+                return CustomiesBlockFactory::getInstance()->get("customies:silicon_ore");
+            case CustomiesItemFactory::getInstance()->get("customies:aluminium_ore")->getId():
+                return CustomiesBlockFactory::getInstance()->get("customies:aluminium_ore");
+
         }
     }
 

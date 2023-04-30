@@ -86,10 +86,10 @@ class MoonGen extends Generator
         $moon_rock = CustomiesBlockFactory::getInstance()->get("customies:moon_rock");
         $ores->setOreTypes([
             /** Cheese ore for demonstration as goldblock */
-            new OreType(VanillaBlocks::GOLD(), $moon_rock, 12, 4, 0, 128),
+            new OreType(CustomiesBlockFactory::getInstance()->get("customies:moon_cheese_ore"), $moon_rock, 12, 4, 0, 128),
             /** Copper ore for demonstration with Copper element */
-            new OreType(VanillaBlocks::ELEMENT_COPPER(), $moon_rock, 26, 4, 0, 60),
-            new OreType(VanillaBlocks::ELEMENT_TIN(), $moon_rock, 12, 4, 0, 60),
+            new OreType(CustomiesBlockFactory::getInstance()->get("customies:copper_ore_moon"), $moon_rock, 26, 4, 0, 60),
+            new OreType(CustomiesBlockFactory::getInstance()->get("customies:tin_ore_moon"), $moon_rock, 12, 4, 0, 60),
         ]);
        $this->populators[] = $ores;
 

@@ -35,11 +35,27 @@ class GalacticraftBlockAndItemList
         switch($id){
             default:
                 return false;
-            case CustomiesBlockFactory::getInstance()->get("customies:moon_turf")->getId():
+            case CustomiesItemFactory::getInstance()->get("customies:moon_turf")->getId():
                 return true;
-            case CustomiesBlockFactory::getInstance()->get("customies:moon_dirt")->getId():
+            case CustomiesItemFactory::getInstance()->get("customies:moon_dirt")->getId():
                 return true;
-            case CustomiesBlockFactory::getInstance()->get("customies:moon_rock")->getId():
+            case CustomiesItemFactory::getInstance()->get("customies:moon_rock")->getId():
+                return true;
+            case CustomiesItemFactory::getInstance()->get("customies:moon_cheese_ore")->getId():
+                return true;
+            case CustomiesItemFactory::getInstance()->get("customies:moon_sapphire_ore")->getId():
+                return true;
+            case CustomiesItemFactory::getInstance()->get("customies:copper_ore_moon")->getId():
+                return true;
+            case CustomiesItemFactory::getInstance()->get("customies:tin_ore_moon")->getId():
+                return true;
+            case CustomiesItemFactory::getInstance()->get("customies:tin_ore")->getId():
+                return true;
+            case CustomiesItemFactory::getInstance()->get("customies:copper_ore")->getId():
+                return true;
+            case CustomiesItemFactory::getInstance()->get("customies:silicon_ore")->getId():
+                return true;
+            case CustomiesItemFactory::getInstance()->get("customies:aluminium_ore")->getId():
                 return true;
         }
     }
@@ -53,6 +69,22 @@ class GalacticraftBlockAndItemList
                 return true;
             case CustomiesItemFactory::getInstance()->get("customies:moon_rock")->getId():
                 return true;
+            case CustomiesItemFactory::getInstance()->get("customies:moon_cheese_ore")->getId():
+                return true;
+            case CustomiesItemFactory::getInstance()->get("customies:moon_sapphire_ore")->getId():
+                return true;
+            case CustomiesItemFactory::getInstance()->get("customies:copper_ore_moon")->getId():
+                return true;
+            case CustomiesItemFactory::getInstance()->get("customies:tin_ore_moon")->getId():
+                return true;
+            case CustomiesItemFactory::getInstance()->get("customies:tin_ore")->getId():
+                return true;
+            case CustomiesItemFactory::getInstance()->get("customies:copper_ore")->getId():
+                return true;
+            case CustomiesItemFactory::getInstance()->get("customies:silicon_ore")->getId():
+                return true;
+            case CustomiesItemFactory::getInstance()->get("customies:aluminium_ore")->getId():
+                return true;
         }
     }
     /** list of Items which have a block form */
@@ -65,6 +97,22 @@ class GalacticraftBlockAndItemList
             case CustomiesItemFactory::getInstance()->get("customies:moon_dirt")->getId():
                 return true;
             case CustomiesItemFactory::getInstance()->get("customies:moon_rock")->getId():
+                return true;
+            case CustomiesItemFactory::getInstance()->get("customies:moon_cheese_ore")->getId():
+                return true;
+            case CustomiesItemFactory::getInstance()->get("customies:moon_sapphire_ore")->getId():
+                return true;
+            case CustomiesItemFactory::getInstance()->get("customies:copper_ore_moon")->getId():
+                return true;
+            case CustomiesItemFactory::getInstance()->get("customies:tin_ore_moon")->getId():
+                return true;
+            case CustomiesItemFactory::getInstance()->get("customies:tin_ore")->getId():
+                return true;
+            case CustomiesItemFactory::getInstance()->get("customies:copper_ore")->getId():
+                return true;
+            case CustomiesItemFactory::getInstance()->get("customies:silicon_ore")->getId():
+                return true;
+            case CustomiesItemFactory::getInstance()->get("customies:aluminium_ore")->getId():
                 return true;
         }
     }
