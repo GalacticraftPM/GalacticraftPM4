@@ -27,20 +27,6 @@ class GameHandler extends GCIBp
             $GC_item = $this->Block_to_Item($blockId);
             $drops = [$GC_item];
             $event->setDrops($drops);
-            #$event->cancel()   ;
-            #$player->getInventory()->addItem($GC_item);
-        }
-
-
-
-        $event->getPlayer()->sendMessage("$name, $blockId, $Fullid");
-
-        switch($name){
-            case"moon_dirt":
-                #$event->set;
-
-
-            break;
 
         }
     }
@@ -59,8 +45,6 @@ class GameHandler extends GCIBp
                 }
             break;
         }
-        $item = $event->getItem()->getId();
-        $event->getPlayer()->sendMessage("$item");
     }
     public function Middle_click_handler($event)
     {
@@ -82,6 +66,52 @@ class GameHandler extends GCIBp
         $TouchedPos = $TouchedBlock->getPosition();
         $world = $TouchedPos->getWorld();
         $TouchedVector = $TouchedPos->asVector3();
+        $face = $event->getFace();
+        /** Blocks which get replaced
+            if($this->isOverideAbleBlock($TouchedBlock)){
+         *      $New_Vector = $TouchedVector;
+         * }
+         */
+        if($face == 5){
+            $New_Vector = $TouchedVector->add(1, 0, 0);
+        }elseif($face == 4){
+            $New_Vector = $TouchedVector->add(-1, 0, 0);
+        }elseif($face == 3){
+            $New_Vector = $TouchedVector->add(0, 0, 1);
+        }elseif($face == 2){
+            $New_Vector = $TouchedVector->add(0, 0, -1);
+        }elseif($face == 1){
+            $New_Vector = $TouchedVector->add(0, 1, 0);
+        }elseif($face == 0){
+            $New_Vector = $TouchedVector->add(0, -1, 0);
+        }
+        /**code to check if there is an entity*/
+        $WorldEntities = $world->getEntities();
+        foreach($WorldEntities as $Entity){
+            $EntityPos = $Entity->getPosition();
+            $EX = $EntityPos->getFloorX();
+            $EY = $EntityPos->getFloorY();
+            $EZ = $EntityPos->getFloorZ();
+            $EfloorVec = new Vector3($EX, $EY, $EZ);
+            $New_Vector2 = $New_Vector->add(0, -1, 0);
+            if($EfloorVec == $New_Vector or $EfloorVec == $New_Vector2) return;
+            if($EfloorVec->distance($New_Vector) < 2);
+        }
+        /** code to remove 1 item on block place */
+        if($event->getPlayer()->isSurvival()) {
+            $item = $event->getItem();
+            $item->setCount($item->getCount() - 1);
+            $event->getPlayer()->getInventory()->setItemInHand($item);
+        }
+        $world->setBlock($New_Vector, $New_Block);
+    }
+
+
+    public function Old_GalacticBlockPlacer($event, $New_Block){
+        $TouchedBlock = $event->getBlock();
+        $TouchedPos = $TouchedBlock->getPosition();
+        $world = $TouchedPos->getWorld();
+        $TouchedVector = $TouchedPos->asVector3();
         $TouchVector = $event->getTouchVector();
         if($TouchVector->getX() == 1){
             $New_Vector = $TouchedVector->add(1, 0, 0);
@@ -98,7 +128,7 @@ class GameHandler extends GCIBp
         }else{
             $New_Vector = $TouchedVector;
         }
-        /**code to check if there is a mob*/
+        /**code to check if there is an entity*/
         $WorldEntities = $world->getEntities();
         foreach($WorldEntities as $Entity){
             $EntityPos = $Entity->getPosition();
@@ -106,7 +136,7 @@ class GameHandler extends GCIBp
             $EY = $EntityPos->getFloorY();
             $EZ = $EntityPos->getFloorZ();
             $EfloorVec = new Vector3($EX, $EY, $EZ);
-            if($EfloorVec == $New_Vector) return;
+            if($EfloorVec == $New_Vector or $EfloorVec == $New_Vector->add(0, -1, 0)) return;
         }
         /** code to remove 1 item on block place */
         if($event->getPlayer()->isSurvival()) {

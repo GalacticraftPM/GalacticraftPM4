@@ -3,10 +3,10 @@
 namespace GalacticraftPM\DemonicDev\World\Generators\Moon\biome;
 
 
-use GalacticraftPM\DemonicDev\World\Generators\Moon\biome\types\SandyBiome;
+use GalacticraftPM\DemonicDev\World\Generators\Moon\biome\types\MoonSurface;
 use pocketmine\block\VanillaBlocks;
 
-class moonBasicBiome extends SandyBiome
+class moonBasicBiome extends MoonSurface
 {
 
     public function __construct()
@@ -19,6 +19,6 @@ class moonBasicBiome extends SandyBiome
 
     public function getName(): string
     {
-        return "Desert";
+        return "MoonBasicBiome";
     }
 }

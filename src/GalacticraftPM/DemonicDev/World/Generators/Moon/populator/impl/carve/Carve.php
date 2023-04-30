@@ -23,6 +23,7 @@ declare(strict_types=1);
 namespace GalacticraftPM\DemonicDev\World\Generators\Moon\populator\impl\carve;
 
 use pocketmine\block\VanillaBlocks;
+use customiesdevs\customies\block\CustomiesBlockFactory;
 use pocketmine\utils\Random;
 use pocketmine\world\format\Chunk;
 use pocketmine\world\World;
@@ -69,10 +70,12 @@ abstract class Carve {
 		}
 
 		$air = VanillaBlocks::AIR()->getFullId();
-		$lava = VanillaBlocks::LAVA()->getFullId();
 		$water = VanillaBlocks::WATER()->getFullId();
 
 		$dirt = VanillaBlocks::DIRT()->getFullId();
+        $moon_rock = CustomiesBlockFactory::getInstance()->get("customies:moon_rock");
+        $moon_dirt = CustomiesBlockFactory::getInstance()->get("customies:moon_dirt");
+        $moon_turf = CustomiesBlockFactory::getInstance()->get("customies:moon_turf");
 
 
 		for($x = $minX; $x < $maxX; ++$x) {
@@ -85,24 +88,22 @@ abstract class Carve {
 						$modY = ($y - 0.5 - $centerY) / $verticalSize;
 
 						if($this->continue($modXZ, $modY, $y)) {
-							if($chunk->getFullBlock($x, $y, $z) === $water || $chunk->getFullBlock($x, $y + 1, $z) >> 4 === $water) {
-								continue;
-							}
 
-							if($y < 11) {
-								$chunk->setFullBlock($x, $y, $z, $air);
-								continue;
-							}
+                            if ($y < 11) {
+                                $chunk->setFullBlock($x, $y, $z, $air);
+                                continue;
+                            }
+                            if($chunk->getFullBlock($x, $y - 1, $z) === $moon_dirt || $chunk->getFullBlock($x, $y - 1, $z) === $moon_turf || $chunk->getFullBlock($x, $y - 1, $z) === $moon_rock){
 
-							if(
-								$chunk->getFullBlock($x, $y - 1, $z) === $dirt &&
-								$chunk->getFullBlock($x, $y + 1, $z) === $air &&
-								$y > 62
-							) {
+                                if (
+                                    $chunk->getFullBlock($x, $y + 1, $z) === $air &&
+                                    $y > 62
+                                ) {
 
-                                /** later for moon turf and under that moon dirt */
-								$chunk->setFullBlock($x, $y - 1, $z, $air);
-							}
+                                    /** later for moon turf and under that moon dirt */
+                                    $chunk->setFullBlock($x, $y - 1, $z, $air);
+                                }
+                            }
 
 							$chunk->setFullBlock($x, $y, $z, $air);
 						}

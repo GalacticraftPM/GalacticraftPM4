@@ -44,22 +44,24 @@ class GalacticCraft_Item_Block_parserAndItem extends GalacticraftBlockAndItemLis
         switch($BlockId){
             default:
                 return null;
+            case CustomiesBlockFactory::getInstance()->get("customies:moon_turf")->getId():
+                return CustomiesItemFactory::getInstance()->get("customies:moon_turf");
             case CustomiesBlockFactory::getInstance()->get("customies:moon_dirt")->getId():
                 return CustomiesItemFactory::getInstance()->get("customies:moon_dirt");
-
-            #  case CustomiesBlockFactory::getInstance()->get("customies:moon_rock")->getId():
-            #     return CustomiesItemFactory::getInstance()->get("customies:moon_rock")->getId();
+            case CustomiesBlockFactory::getInstance()->get("customies:moon_rock")->getId():
+                 return CustomiesItemFactory::getInstance()->get("customies:moon_rock");
         }
     }
     public function Item_to_BlockTranslator($ItemId){
         switch($ItemId){
             default:
                 return null;
+            case CustomiesItemFactory::getInstance()->get("customies:moon_turf")->getId():
+                return CustomiesBlockFactory::getInstance()->get("customies:moon_turf");
             case CustomiesItemFactory::getInstance()->get("customies:moon_dirt")->getId():
                 return CustomiesBlockFactory::getInstance()->get("customies:moon_dirt");
-
-            #  case CustomiesBlockFactory::getInstance()->get("customies:moon_rock")->getId():
-            #     return CustomiesItemFactory::getInstance()->get("customies:moon_rock")->getId();
+            case CustomiesItemFactory::getInstance()->get("customies:moon_rock")->getId():
+                return CustomiesBlockFactory::getInstance()->get("customies:moon_rock");
         }
     }
 

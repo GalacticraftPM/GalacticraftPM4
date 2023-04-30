@@ -79,6 +79,7 @@ class BiomeFactory implements BiomeIds {
 		// TODO Id 156
 		$this->registerBiome(BiomeIds::ROOFED_FOREST_HILLS, new RoffedForestHills());
          */
+        $this->registerBiome(BiomeIds::Moon_Basic_Biome, new MoonBasicBiome());
 	}
 
 	public function registerBiome(int $id, Biome $biome): void {

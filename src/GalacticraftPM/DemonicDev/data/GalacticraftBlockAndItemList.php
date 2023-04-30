@@ -35,16 +35,20 @@ class GalacticraftBlockAndItemList
         switch($id){
             default:
                 return false;
+            case CustomiesBlockFactory::getInstance()->get("customies:moon_turf")->getId():
+                return true;
             case CustomiesBlockFactory::getInstance()->get("customies:moon_dirt")->getId():
                 return true;
-        #    case CustomiesBlockFactory::getInstance()->get("customies:moon_rock")->getId():
-         #       return true;
+            case CustomiesBlockFactory::getInstance()->get("customies:moon_rock")->getId():
+                return true;
         }
     }
     public function ItemList($id){
         switch($id){
             default:
                 return false;
+            case CustomiesItemFactory::getInstance()->get("customies:moon_turf")->getId():
+                return true;
             case CustomiesItemFactory::getInstance()->get("customies:moon_dirt")->getId():
                 return true;
             case CustomiesItemFactory::getInstance()->get("customies:moon_rock")->getId():
@@ -56,10 +60,12 @@ class GalacticraftBlockAndItemList
         switch($id){
             default:
                 return false;
+            case CustomiesItemFactory::getInstance()->get("customies:moon_turf")->getId():
+                return true;
             case CustomiesItemFactory::getInstance()->get("customies:moon_dirt")->getId():
                 return true;
-        #    case CustomiesItemFactory::getInstance()->get("customies:moon_rock")->getId():
-         #       return true;
+            case CustomiesItemFactory::getInstance()->get("customies:moon_rock")->getId():
+                return true;
         }
     }
 }

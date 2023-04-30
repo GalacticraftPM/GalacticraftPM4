@@ -26,9 +26,9 @@ use GalacticraftPM\DemonicDev\Main;
 use GalacticraftPM\DemonicDev\World\Generators\Moon\biome\types\Biome;
 use GalacticraftPM\DemonicDev\World\Generators\Moon\populator\impl\CarvePopulator;
 use GalacticraftPM\DemonicDev\World\Generators\Moon\populator\impl\LakePopulator;
+use GalacticraftPM\DemonicDev\World\Generators\Moon\populator\MoonSurfacePopulator;
 #use czechpmdevs\multiworld\generator\normal\populator\impl\GroundCoverPopulator;
 use customiesdevs\customies\block\CustomiesBlockFactory;
-use customiesdevs\customies\item\CreativeInventoryInfo;
 use pocketmine\block\VanillaBlocks;
 use pocketmine\utils\Random;
 use pocketmine\world\ChunkManager;
@@ -77,12 +77,13 @@ class MoonGen extends Generator
        # $this->generationPopulators[] = new GroundCoverPopulator();
 
         // Other populators...
-       $this->populators[] = new CarvePopulator($this->seed);
+        $this->populators[] = new CarvePopulator($this->seed);
         $this->populators[] = new LakePopulator();
+        /** here comes the MoonSurface Populator */
+        $this->generationPopulators[] = new MoonSurfacePopulator();
 
         $ores = new Ore();
-        $stone = VanillaBlocks::STONE();
-        $moon_rock = CustomiesBlockFactory::getInstance()->get("customies:moon_dirt");
+        $moon_rock = CustomiesBlockFactory::getInstance()->get("customies:moon_rock");
         $ores->setOreTypes([
             /** Cheese ore for demonstration as goldblock */
             new OreType(VanillaBlocks::GOLD(), $moon_rock, 12, 4, 0, 128),
@@ -115,9 +116,7 @@ class MoonGen extends Generator
         $biomeCache = [];
 
         $bedrock = VanillaBlocks::BEDROCK()->getFullId();
-       # $stillWater = VanillaBlocks::WATER()->getFullId();
-        #$moon_rock = VanillaBlocks::STONE()->getFullId();
-        $moon_rock = CustomiesBlockFactory::getInstance()->get("customies:moon_dirt")->getFullId();
+        $moon_rock = CustomiesBlockFactory::getInstance()->get("customies:moon_rock")->getFullId();
         $Air = VanillaBlocks::AIR()->getFullId();
         $baseX = $chunkX * 16;
         $baseZ = $chunkZ * 16;
