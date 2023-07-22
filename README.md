@@ -1,6 +1,6 @@
 # GalacticraftPM4
 
-<Discontinued due to https://github.com/GalacticraftPM/GalacticraftPM5>
+< Discontinued due to https://github.com/GalacticraftPM/GalacticraftPM5 >
 A simple Plugin, to experience Galacticraft in Bedrock
 
 U need to test this plugin Customies
